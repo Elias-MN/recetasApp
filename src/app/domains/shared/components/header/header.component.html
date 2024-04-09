@@ -9,6 +9,7 @@
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li routerLink="/home"><a>Home</a></li>
         <li routerLink="/list"><a>Recetas</a></li>
+        <li onclick="addRecipeModal.showModal()"><a>Añadir</a></li>
       </ul>
     </div>
     <a class="btn btn-ghost text-xl">daisyUI</a>
@@ -17,6 +18,7 @@
     <ul class="menu menu-horizontal px-1">
       <li routerLink="/home"><a>Home</a></li>
       <li routerLink="/list"><a>Recetas</a></li>
+      <li onclick="addRecipeModal.showModal()"><a>Añadir</a></li>
     </ul>
   </div>
   <div class="navbar-end">
@@ -27,4 +29,38 @@
       </div>
     </div>
   </div>
+
+  <dialog id="addRecipeModal" class="modal">
+    <div class="modal-box flex flex-col items-center">
+      <h3 class="font-bold text-lg">Añadir nueva receta</h3>
+      <div class="modal-action">
+        <form [formGroup]="addRecipe" method="dialog" (ngSubmit)="submit()">
+          <div class="flex flex-col">
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">Receta</span>
+              </div>
+              <input placeholder="Introduzca el nombre" formControlName="recipeName" type="text"
+                class="input input-bordered input-primary w-full max-w-xs" />
+            </label>
+          </div>
+          <div class="flex flex-col">
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">Dificultad</span>
+              </div>
+              <input formControlName="recipeDifficulty" placeholder="Entre 1 y 10" min="1" max="10" type="number"
+                class="input input-bordered input-primary w-full max-w-xs" />
+            </label>
+          </div>
+
+          <div class="p-3 flex gap-2">
+            <button class="btn">Cancelar</button>
+            <button class="btn" type="submit" [disabled]="addRecipe.invalid">Añadir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
 </div>
