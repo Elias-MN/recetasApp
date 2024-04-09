@@ -1,8 +1,45 @@
 <div class="card w-96 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+  <figure><img [src]="recipe.image" alt="Shoes" /></figure>
+
+  <div class="rating">
+    @switch (recipe.stars) {
+    @case (1) {
+    <input disabled="readonly" type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+    }
+    @case (2) {
+    <input disabled type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+    }
+    @case (3) {
+    <input disabled type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
+    }
+    @case (4) {
+    <input disabled type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
+    }
+    @case (5) {
+    <input disabled type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
+    <input disabled type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
+    }
+    }
+
+
+  </div>
+
+  <div class="radial-progress" [style]="'--value:' +  (recipe.difficulty | multiplyDifficulty) + ';'"
+    role="progressbar">
+    {{ recipe.difficulty | multiplyDifficulty }}</div>
+
   <div class="card-body">
     <h3 class="card-title">
-      3 estrellas
+      {{ recipe.name }}
     </h3>
   </div>
 </div>
