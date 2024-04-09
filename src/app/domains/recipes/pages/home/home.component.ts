@@ -9,6 +9,6 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export default class HomeComponent {
 
 }

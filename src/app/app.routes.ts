@@ -1,11 +1,22 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './domains/recipes/pages/home/home.component';
-import { ListComponent } from './domains/recipes/pages/list/list.component';
-import { ProfileComponent } from './domains/recipes/pages/profile/profile.component';
+import { Layout1Component } from './domains/shared/layouts/layout1/layout1.component';
+import { Layout2Component } from './domains/shared/layouts/layout2/layout2.component';
 
 export const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "home", component: HomeComponent },
-  { path: "list", component: ListComponent },
-  { path: "profile", component: ProfileComponent }
+  {
+    path: "", component: Layout1Component, children: [
+      { path: "", loadComponent: () => import("./domains/recipes/pages/home/home.component") },
+      { path: "home", loadComponent: () => import("./domains/recipes/pages/home/home.component") },
+      { path: "list", loadComponent: () => import("./domains/recipes/pages/list/list.component") },
+      { path: "profile", loadComponent: () => import("./domains/recipes/pages/profile/profile.component") },
+    ]
+  },
+  {
+    path: "alternative", component: Layout2Component, children: [
+      { path: "", loadComponent: () => import("./domains/recipes/pages/home/home.component") },
+      { path: "home", loadComponent: () => import("./domains/recipes/pages/home/home.component") },
+      { path: "list", loadComponent: () => import("./domains/recipes/pages/list/list.component") },
+      { path: "profile", loadComponent: () => import("./domains/recipes/pages/profile/profile.component") },
+    ]
+  }
 ];

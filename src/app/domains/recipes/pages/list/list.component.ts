@@ -11,7 +11,7 @@ import { Recipe } from '../../../shared/models/recipe';
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
-export class ListComponent {
+export default class ListComponent {
 
   listRecipes: Recipe[] = [];
   //listRecipes = signal<Recipe[]>([]);
