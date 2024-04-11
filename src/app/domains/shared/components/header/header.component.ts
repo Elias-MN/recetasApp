@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Recipe } from '../../models/recipe';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent {
     recipeDifficulty: new FormControl('', [Validators.required, Validators.min(1), Validators.max(10)])
   });
 
+  private recipeService = inject(RecipeService);
 
   submit() {
 
@@ -26,6 +28,8 @@ export class HeaderComponent {
       stars: 4,
       image: "https://picsum.photos/seed/1/400/400"
     }
+
+    this.recipeService.addRecipe(newRecipe);
 
   };
 
