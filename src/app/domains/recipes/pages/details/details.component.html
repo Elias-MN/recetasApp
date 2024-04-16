@@ -1,0 +1,37 @@
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row">
+    <div>
+      <img src="https://hmzzohspatrfmktlogjs.supabase.co/storage/v1/object/public/images/receta_1713273979216.jpg"
+        class="max-w-52 rounded-lg shadow-2xl" />
+      <div class="flex justify-center">
+        @for (i of [].constructor(recipeDetails()?.stars); track $index) {
+        <input disabled="readonly" type="radio" name="rating-1" class="w-4 mask mask-star-2 bg-orange-400" />
+        }
+      </div>
+    </div>
+    <div>
+      <h1 class="text-5xl font-bold">{{ recipeDetails()?.name }}</h1>
+      <h3>Descripción:</h3>
+      <p class="py-6">{{ recipeDetails()?.description }}</p>
+
+      <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+        <li>
+          <span class="font-semibold text-gray-900 dark:text-white">Tiempo de realización: </span> {{
+          recipeDetails()?.time | formatTime }}
+        </li>
+        <li>
+          <span class="font-semibold text-gray-900 dark:text-white">Calorías: </span> {{ recipeDetails()?.calories }}
+        </li>
+        <li>
+          <span class="font-semibold text-gray-900 dark:text-white">Dificultad: </span> {{ recipeDetails()?.difficulty
+          }}
+        </li>
+        <li>
+          <span class="font-semibold text-gray-900 dark:text-white">Tipo: </span> {{ recipeDetails()?.type }}
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</div>

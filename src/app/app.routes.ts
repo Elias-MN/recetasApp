@@ -9,6 +9,7 @@ export const routes: Routes = [
       { path: "home", loadComponent: () => import("./domains/recipes/pages/home/home.component") },
       { path: "list", loadComponent: () => import("./domains/recipes/pages/list/list.component") },
       { path: "profile", loadComponent: () => import("./domains/recipes/pages/profile/profile.component") },
+      { path: "details/:id", loadComponent: () => import("./domains/recipes/pages/details/details.component") },
     ]
   },
   {

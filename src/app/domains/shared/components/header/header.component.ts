@@ -15,21 +15,24 @@ export class HeaderComponent {
 
   addRecipe = new FormGroup({
     recipeName: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    recipeDifficulty: new FormControl('', [Validators.required, Validators.min(1), Validators.max(10)])
+    recipeDifficulty: new FormControl('', [Validators.required, Validators.min(1), Validators.max(10)]),
+    recipeStars: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)])
   });
 
   private recipeService = inject(RecipeService);
 
   submit() {
-
     let newRecipe: Recipe = {
       name: this.addRecipe.value.recipeName!,
       difficulty: Number(this.addRecipe.value.recipeDifficulty)!,
-      stars: 4,
+      stars: Number(this.addRecipe.value.recipeStars)!,
       image: "https://picsum.photos/seed/1/400/400"
     }
-
     this.recipeService.addRecipe(newRecipe);
+
+    this.addRecipe.controls.recipeName.setValue("");
+    this.addRecipe.controls.recipeDifficulty.setValue("");
+    this.addRecipe.controls.recipeStars.setValue("");
 
   };
 

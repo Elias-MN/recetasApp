@@ -23,7 +23,7 @@ export class RecipeService {
     from(this.supabase
       .from('recipes')
       .insert([
-        { name: newRecipe.name, difficulty: newRecipe.difficulty },
+        { name: newRecipe.name, difficulty: newRecipe.difficulty, stars: newRecipe.stars },
       ])
       .select()
       .then(response => {
@@ -42,6 +42,15 @@ export class RecipeService {
         let result = response.data as Recipe[];
         this.recipeList.set(result);
       })
+    );
+  }
+
+  getRecipe(id: string): Observable<Recipe[]> {
+    return from(this.supabase
+      .from('recipes')
+      .select('*')
+      .eq('id', id)
+      .then(response => response.data as Recipe[])
     );
   }
 

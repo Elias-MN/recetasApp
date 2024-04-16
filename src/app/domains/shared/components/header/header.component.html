@@ -34,7 +34,7 @@
     <div class="modal-box flex flex-col items-center">
       <h3 class="font-bold text-lg">Añadir nueva receta</h3>
       <div class="modal-action">
-        <form [formGroup]="addRecipe" method="dialog" (ngSubmit)="submit()">
+        <form [formGroup]="addRecipe" method="dialog">
           <div class="flex flex-col">
             <label class="form-control w-full max-w-xs">
               <div class="label">
@@ -54,9 +54,19 @@
             </label>
           </div>
 
+          <div class="flex flex-col">
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">Estrellas</span>
+              </div>
+              <input formControlName="recipeStars" placeholder="Entre 1 y 5" min="1" max="5" type="number"
+                class="input input-bordered input-primary w-full max-w-xs" />
+            </label>
+          </div>
+
           <div class="p-3 flex gap-2">
             <button class="btn">Cancelar</button>
-            <button class="btn" type="submit" [disabled]="addRecipe.invalid">Añadir</button>
+            <button (click)="submit()" class="btn" type="submit" [disabled]="addRecipe.invalid">Añadir</button>
           </div>
         </form>
       </div>
