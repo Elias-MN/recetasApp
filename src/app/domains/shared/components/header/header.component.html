@@ -64,6 +64,20 @@
             </label>
           </div>
 
+
+          <div class="flex flex-col">
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">Imagen de la receta</span>
+              </div>
+              <input type="file" accept="image/*" (change)="uploadPhoto($event)" />
+            </label>
+          </div>
+
+
+
+
+
           <div class="p-3 flex gap-2">
             <button class="btn">Cancelar</button>
             <button (click)="submit()" class="btn" type="submit" [disabled]="addRecipe.invalid">Añadir</button>

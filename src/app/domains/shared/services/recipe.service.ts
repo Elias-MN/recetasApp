@@ -23,7 +23,7 @@ export class RecipeService {
     from(this.supabase
       .from('recipes')
       .insert([
-        { name: newRecipe.name, difficulty: newRecipe.difficulty, stars: newRecipe.stars },
+        { name: newRecipe.name, difficulty: newRecipe.difficulty, stars: newRecipe.stars, image: newRecipe.image },
       ])
       .select()
       .then(response => {
@@ -54,5 +54,10 @@ export class RecipeService {
     );
   }
 
+
+  async upload(bucket: string, filePath: string, file: File) {
+    const { data, error } = await this.supabase.storage.from(bucket).upload(filePath, file);
+    return { data, error };
+  }
 
 }
