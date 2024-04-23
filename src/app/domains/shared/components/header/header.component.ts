@@ -63,5 +63,11 @@ export class HeaderComponent {
     this.recipeService.filterString.set(input.value);
   }
 
+  filterByDifficulty(event: Event) {
+    let input = event.target as HTMLInputElement;
+    console.log(input.value);
+    this.recipeService.getRecipesByDifficulty(input.value);
+  }
+
 
 }

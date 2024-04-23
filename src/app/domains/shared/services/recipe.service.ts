@@ -57,6 +57,18 @@ export class RecipeService {
     );
   }
 
+  getRecipesByDifficulty(difficulty: string) {
+    from(this.supabase
+      .from('recipes')
+      .select('*')
+      .eq('difficulty', difficulty)
+      .then(response => {
+        let result = response.data as Recipe[];
+        this.recipeList.set(result);
+      })
+    );
+  }
+
 
   async upload(bucket: string, filePath: string, file: File) {
     const { data, error } = await this.supabase.storage.from(bucket).upload(filePath, file);
