@@ -1,7 +1,9 @@
 <main class="mb-20 flex flex-row flex-wrap justify-center gap-4">
 
   @for (item of listRecipes(); track $index) {
+  @if(item.name.toLocaleLowerCase().startsWith(filterString().toLocaleLowerCase())){
   <app-recipe [recipe]="item"></app-recipe>
+  }
   }
 
 </main>

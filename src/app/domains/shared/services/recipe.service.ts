@@ -15,6 +15,9 @@ export class RecipeService {
   recipeList = signal<Recipe[]>([]);
   recipeList$ = toObservable(this.recipeList);
 
+  filterString = signal<string>("");
+  filterString$ = toObservable(this.filterString);
+
   constructor() {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }

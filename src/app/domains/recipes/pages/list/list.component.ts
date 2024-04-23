@@ -16,6 +16,7 @@ export default class ListComponent {
 
   listRecipes = signal<Recipe[]>([]);
   private recipeService = inject(RecipeService);
+  filterString = signal<string>("");
 
   ngOnInit() {
 
@@ -26,6 +27,13 @@ export default class ListComponent {
         this.listRecipes.set(changes);
       }
     });
+
+    this.recipeService.filterString$.subscribe({
+      next: (changes) => {
+        this.filterString.set(changes);
+      }
+    });
+
   }
 
 

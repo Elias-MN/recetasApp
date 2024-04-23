@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Recipe } from '../../models/recipe';
@@ -55,6 +55,12 @@ export class HeaderComponent {
     } catch (error) {
       console.log(error);
     }
+  }
+
+
+  filter(event: Event) {
+    let input = event.target as HTMLInputElement;
+    this.recipeService.filterString.set(input.value);
   }
 
 

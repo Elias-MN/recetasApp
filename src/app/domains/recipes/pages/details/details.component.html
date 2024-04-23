@@ -1,8 +1,7 @@
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row">
     <div>
-      <img src="https://hmzzohspatrfmktlogjs.supabase.co/storage/v1/object/public/images/receta_1713273979216.jpg"
-        class="max-w-52 rounded-lg shadow-2xl" />
+      <img [src]="recipeDetails()?.image" class="max-w-52 rounded-lg shadow-2xl" />
       <div class="flex justify-center">
         @for (i of [].constructor(recipeDetails()?.stars); track $index) {
         <input disabled="readonly" type="radio" name="rating-1" class="w-4 mask mask-star-2 bg-orange-400" />
